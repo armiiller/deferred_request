@@ -14,8 +14,8 @@ jobs:
       matrix:
         ruby: ['2.7', '3.0']
         gemfile:
-          - rails_6
-          - rails_6_1
+          # - rails_6
+          # - rails_6_1
           - rails_7
           - rails_master
     env:
@@ -44,8 +44,9 @@ jobs:
       matrix:
         ruby: ['2.7', '3.0']
         gemfile:
-          - rails_6
-          - rails_6_1
+          # - rails_6
+          # - rails_6_1
+          - rails_7
           - rails_master
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
@@ -82,8 +83,9 @@ jobs:
       matrix:
         ruby: ['2.7', '3.0']
         gemfile:
-          - rails_6
-          - rails_6_1
+          # - rails_6
+          # - rails_6_1
+          - rails_7
           - rails_master
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile

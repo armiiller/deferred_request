@@ -29,7 +29,7 @@ module DeferredRequest
       deferred_request = DeferredRequest.from_request(request)
       deferred_request.save!
 
-      deferred_request.perform_later!
+      deferred_request.perform_later
     end
 
     def perform_later

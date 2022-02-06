@@ -84,12 +84,14 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.15.0)
+    mysql2 (0.5.3)
     nio4r (2.5.8)
     nokogiri (1.13.1-x86_64-linux)
       racc (~> 1.4)
     parallel (1.21.0)
     parser (3.1.0.0)
       ast (~> 2.4.1)
+    pg (1.3.1)
     racc (1.6.0)
     rack (2.2.3)
     rack-test (1.1.0)
@@ -168,9 +170,11 @@ PLATFORMS
 DEPENDENCIES
   appraisal
   deferred_request!
+  mysql2
+  pg
   rails (~> 6.0.0)
   sprockets-rails
-  sqlite3
+  sqlite3 (~> 1.4)
   standardrb
 
 BUNDLED WITH

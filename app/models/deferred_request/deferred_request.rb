@@ -13,7 +13,6 @@ module DeferredRequest
     def self.from_request(request)
       deferred_request = DeferredRequest.new
 
-      debugger
       deferred_request.controller = request.controller_class
       deferred_request.action = request.params["action"]
 
@@ -47,8 +46,6 @@ module DeferredRequest
 
       save!
     end
-
-    private
 
     def self.get_headers(request)
       # Get the request headers from the request

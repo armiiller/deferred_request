@@ -45,7 +45,7 @@ def status_callback
   head :ok
 
   # Then queue the request to run later
-  deferred_request = DeferredRequest::DeferredRequest.from_request(request, params)
+  deferred_request = DeferredRequest::DeferredRequest.from_request(request)
   deferred_request.save!
 
   deferred_request.peform_later

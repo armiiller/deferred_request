@@ -11,10 +11,11 @@ jobs:
   sqlite:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         ruby: ['2.7', '3.0']
         gemfile:
-          # - rails_6
+          - rails_6
           - rails_6_1
           - rails_7
           - rails_master
@@ -41,10 +42,11 @@ jobs:
   postgres:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         ruby: ['2.7', '3.0']
         gemfile:
-          # - rails_6
+          - rails_6
           - rails_6_1
           - rails_7
           - rails_master
@@ -80,10 +82,11 @@ jobs:
   mysql:
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         ruby: ['2.7', '3.0']
         gemfile:
-          # - rails_6
+          - rails_6
           - rails_6_1
           - rails_7
           - rails_master

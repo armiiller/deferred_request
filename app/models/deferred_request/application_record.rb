@@ -1,5 +1,5 @@
 module DeferredRequest
-  class ApplicationRecord < DeferredRequest.model_parent_class.constantize
+  class ApplicationRecord < ActiveRecord::Base
     self.abstract_class = true
   end
 end

@@ -1,7 +1,7 @@
 module DeferredRequest
   class DeferredRequest < ApplicationRecord
-    serialize :routing, JSON, default: {}
-    serialize :request, JSON, default: {}
+    serialize :routing, JSON
+    serialize :request, JSON
 
     store_accessor :routing, "controller", "action"
     store_accessor :request, "url", "method", "headers", "params", "remote_ip"

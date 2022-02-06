@@ -3,31 +3,31 @@ module DeferredRequest
     serialize :routing, JSON, default: {}
     serialize :request, JSON, default: {}
 
-    store_accessor :routing, :controller, :action
-    store_accessor :request, :url, :method, :headers, :params, :remote_ip
+    store_accessor :routing, "controller", "action"
+    store_accessor :request, "url", "method", "headers", "params", "remote_ip"
 
-    enum status: {queued: 0, processing: 1, processed: 2, failed: 99}
+    enum status: {queued: 0, processing: 1, complete: 2, error: 99}
 
     # request: ActionDispatch::Request
-    # params: ActionDispatch::Http::Parameters
-    # create a deferred request from a ActionDispatch::Request and ActionDispatch::Http::Parameters
-    def self.from_request(request, params)
-      deferred_request = DeferredRequest::DeferredRequest.new
+    # create a deferred request from a ActionDispatch::Request
+    def self.from_request(request)
+      deferred_request = DeferredRequest.new
 
-      deferred_request.controller = params["controller"]
-      deferred_request.action = params["action"]
+      debugger
+      deferred_request.controller = request.controller_class
+      deferred_request.action = request.params["action"]
       
       deferred_request.url = request.url
       deferred_request.method = request.method
       deferred_request.headers = get_headers(request)
-      deferred_request.params = params.to_unsafe_h.except(:controller, :action)
+      deferred_request.params = request.params.except(:controller, :action)
       deferred_request.remote_ip = request.remote_ip
 
       deferred_request
     end
 
     def perform_later
-      DeferredRequest::DeferredRequestJob.perform_later(self.id)
+      DeferredRequestJob.perform_later(self.id)
     end
 
     def perform!
@@ -35,13 +35,11 @@ module DeferredRequest
         self.status = :processing
         self.save!
 
-        klass = request.klass
-        method = request.method
+        klass = self.controller.constantize.new
 
-        self.result = klass.try(method.to_sym, request.params)
-
+        self.result = klass.try("#{self.action}_deferred".to_sym, self)
         self.status = :complete
-      rescue => exception
+      rescue => e
         Rails.logger.error("DeferredRequest::DeferredRequestJob: #{e.message}")
         self.result = e.message
         self.status = :error

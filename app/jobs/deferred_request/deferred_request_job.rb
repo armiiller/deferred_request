@@ -4,9 +4,10 @@ module DeferredRequest
 
     def perform(*args)
       id = args[0]
-      request = DeferredRequest::DeferredRequest.find(id)
+      request = DeferredRequest.find(id)
       request.perform!
     rescue ActiveRecord::RecordNotFound
       Rails.logger.error("DeferredRequest::DeferredRequestJob: Could not find DeferredRequest with id: #{id}")
+    end
   end
 end

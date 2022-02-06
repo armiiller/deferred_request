@@ -1,7 +1,7 @@
 module DeferredRequest
   class TestController < ApplicationController
     skip_before_action :verify_authenticity_token
-    
+
     def status_callback
       # We can go ahead and give a :ok response (fast and snappy)
       head :ok
@@ -18,7 +18,7 @@ module DeferredRequest
       if deferred_request.params["SmsStatus"] == "delivered"
         # mark message as delivered
       end
-    
+
       # return a status and it will be saved to the database
       true
     end

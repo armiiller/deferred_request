@@ -16,7 +16,7 @@ module DeferredRequest
       debugger
       deferred_request.controller = request.controller_class
       deferred_request.action = request.params["action"]
-      
+
       deferred_request.url = request.url
       deferred_request.method = request.method
       deferred_request.headers = get_headers(request)
@@ -27,36 +27,36 @@ module DeferredRequest
     end
 
     def perform_later
-      DeferredRequestJob.perform_later(self.id)
+      DeferredRequestJob.perform_later(id)
     end
 
     def perform!
       begin
         self.status = :processing
-        self.save!
+        save!
 
-        klass = self.controller.constantize.new
+        klass = controller.constantize.new
 
-        self.result = klass.try("#{self.action}_deferred".to_sym, self)
+        self.result = klass.try("#{action}_deferred".to_sym, self)
         self.status = :complete
       rescue => e
         Rails.logger.error("DeferredRequest::DeferredRequestJob: #{e.message}")
         self.result = e.message
         self.status = :error
       end
-      
-      self.save!
+
+      save!
     end
 
     private
 
-      def self.get_headers(request)
-        # Get the request headers from the request
-        {}.tap do |t|
-          request.headers.each do |key, value|
-            t[key] = value if key.downcase.starts_with?("http")
-          end
+    def self.get_headers(request)
+      # Get the request headers from the request
+      {}.tap do |t|
+        request.headers.each do |key, value|
+          t[key] = value if key.downcase.starts_with?("http")
         end
       end
+    end
   end
 end

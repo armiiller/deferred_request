@@ -15,7 +15,7 @@ jobs:
         ruby: ['2.7', '3.0']
         gemfile:
           # - rails_6
-          # - rails_6_1
+          - rails_6_1
           - rails_7
           - rails_master
     env:
@@ -45,7 +45,7 @@ jobs:
         ruby: ['2.7', '3.0']
         gemfile:
           # - rails_6
-          # - rails_6_1
+          - rails_6_1
           - rails_7
           - rails_master
     env:
@@ -84,7 +84,7 @@ jobs:
         ruby: ['2.7', '3.0']
         gemfile:
           # - rails_6
-          # - rails_6_1
+          - rails_6_1
           - rails_7
           - rails_master
     env:

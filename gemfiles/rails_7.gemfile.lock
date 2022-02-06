@@ -1,5 +1,5 @@
 PATH
-  remote: .
+  remote: ..
   specs:
     deferred_request (0.0.1)
       rails (>= 6.0.0)
@@ -168,6 +168,7 @@ PLATFORMS
 DEPENDENCIES
   appraisal
   deferred_request!
+  rails (~> 7.0.0)
   sprockets-rails
   sqlite3
 

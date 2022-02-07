@@ -1,8 +1,8 @@
 module DeferredRequest
   class DeferredRequest < ApplicationRecord
-    serialize :routing, JSON
-    serialize :request, JSON
-    serialize :result, JSON
+    serialize :routing
+    serialize :request
+    serialize :result
 
     store_accessor :routing, "controller", "action"
     store_accessor :request, "url", "method", "headers", "params", "remote_ip"
@@ -14,7 +14,7 @@ module DeferredRequest
     def self.from_request(request)
       deferred_request = DeferredRequest.new
 
-      deferred_request.controller = request.controller_class
+      deferred_request.controller = request.controller_class.name
       deferred_request.action = request.params["action"]
 
       deferred_request.url = request.url

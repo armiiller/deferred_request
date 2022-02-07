@@ -1,7 +1,8 @@
 module DeferredRequest
   class DeferredRequest < ApplicationRecord
-    serialize :routing, JSON
-    serialize :request, JSON
+    serialize :routing
+    serialize :request
+    serialize :result
 
     store_accessor :routing, "controller", "action"
     store_accessor :request, "url", "method", "headers", "params", "remote_ip"
@@ -13,7 +14,7 @@ module DeferredRequest
     def self.from_request(request)
       deferred_request = DeferredRequest.new
 
-      deferred_request.controller = request.controller_class
+      deferred_request.controller = request.controller_class.name
       deferred_request.action = request.params["action"]
 
       deferred_request.url = request.url
@@ -43,7 +44,7 @@ module DeferredRequest
 
         klass = controller.constantize.new
 
-        self.result = klass.try("#{action}_deferred".to_sym, self)
+        self.result = klass.send("#{action}_deferred".to_sym, self)
         self.status = :complete
       rescue => e
         Rails.logger.error("DeferredRequest::DeferredRequestJob: #{e.message}")

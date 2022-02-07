@@ -1,7 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  request: '{"url":"http://localhost:3000/status_callback?yo=some_text","method":"POST","headers":{"HTTP_VERSION":"HTTP/1.1","HTTP_USER_AGENT":"PostmanRuntime/7.29.0","HTTP_ACCEPT":"*/*","HTTP_POSTMAN_TOKEN":"ab8d6da5-575e-49a1-85bd-2a1f7be0c06e","HTTP_HOST":"localhost:3000","HTTP_ACCEPT_ENCODING":"gzip,
-    deflate, br","HTTP_CONNECTION":"keep-alive"},"params":{"some":"more","yo":"some_text","test":{"some":"more"}},"remote_ip":"::1"}'
-  routing: '{"controller":"TestController","action":"status_callback"}'
-  status: "queued"
+# one:
+#   request: '{"url":"http://localhost:3000/status_callback?yo=some_text","method":"POST","headers":{"HTTP_VERSION":"HTTP/1.1","HTTP_USER_AGENT":"PostmanRuntime/7.29.0","HTTP_ACCEPT":"*/*","HTTP_POSTMAN_TOKEN":"ab8d6da5-575e-49a1-85bd-2a1f7be0c06e","HTTP_HOST":"localhost:3000","HTTP_ACCEPT_ENCODING":"gzip,
+#     deflate, br","HTTP_CONNECTION":"keep-alive"},"params":{"some":"more","yo":"some_text","test":{"some":"more"}},"remote_ip":"::1"}'
+#   routing: '{"controller":"TestController","action":"status_callback"}'
+#   status: "queued"

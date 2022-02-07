@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.1](https://github.com/armiiller/deferred_request/compare/v1.0.0...v1.0.1) (2022-02-07)
+
+
+### Bug Fixes
+
+* Adding Tests ([#2](https://github.com/armiiller/deferred_request/issues/2)) ([3fd620b](https://github.com/armiiller/deferred_request/commit/3fd620b3729828e9ba9ccef371057a58ccfaa674))
+
 ## 1.0.0 (2022-02-06)
 
 

@@ -7,7 +7,7 @@ module DeferredRequest
     test "can_defer json request successfully" do
       answer = 1
 
-      assert_no_enqueued_jobs
+      assert_no_performed_jobs
 
       assert_difference("DeferredRequest.count") do
         post status_callback_url, params: {answer: answer}, as: :json
@@ -23,13 +23,13 @@ module DeferredRequest
 
       assert_equal answer, last_request.result
 
-      assert_no_enqueued_jobs
+      assert_performed_jobs 1
     end
 
     test "can_defer json request successfully but handle no deferred method" do
       answer = 2
 
-      assert_no_enqueued_jobs
+      assert_no_performed_jobs
 
       assert_difference("DeferredRequest.count") do
         post status_error_url, params: {answer: answer}, as: :json
@@ -46,7 +46,7 @@ module DeferredRequest
       assert_not_equal answer, last_request.result
       assert_equal "error", last_request.status
 
-      assert_no_enqueued_jobs
+      assert_performed_jobs 1
     end
   end
 end

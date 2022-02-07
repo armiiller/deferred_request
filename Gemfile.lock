@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    deferred_request (0.0.1)
+    deferred_request (1.0.0)
       rails (>= 6.0.0)
 
 GEM

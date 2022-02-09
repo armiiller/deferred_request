@@ -65,6 +65,15 @@ end
 # ...
 ```
 
+### Class Methods
+- `DeferredRequest.from_request(request)` - returns a DeferredRequest::DeferredRequest object (unsaved). Returns the DeferredRequest::DeferredRequest instance.
+- `DeferredRequest.perform_later_from_request!(request)` - creates a deferred request (saved) and enqueues job to process the request. Returns the DeferredRequest::DeferredRequest instance.
+
+### Instance Methods
+- `deferred_request.perform_later` - Enqueues a job to `perform!` the deferred request later. Returns the job id.
+- `deferred_request.perform!` - Calls the `#{controller}_deferred(deferred_request)` method to be processed. Returns the deferred_request instance or raises an exception.
+
+
 ## 🙏 Contributing
 
 If you have an issue you'd like to submit, please do so using the issue tracker in GitHub. In order for us to help you in the best way possible, please be as detailed as you can.

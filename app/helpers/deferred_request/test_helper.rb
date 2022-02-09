@@ -1,3 +1,4 @@
 module DeferredRequest
-  VERSION = "1.0.1"
+  module TestHelper
+  end
 end

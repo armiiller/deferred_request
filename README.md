@@ -63,12 +63,23 @@ end
 ```
 
 ### Class Methods
-- `DeferredRequest.from_request(request)` - returns a DeferredRequest::DeferredRequest object (unsaved). Returns the DeferredRequest::DeferredRequest instance.
-- `DeferredRequest.perform_later_from_request!(request)` - creates a deferred request (saved) and enqueues job to process the request. Returns the DeferredRequest::DeferredRequest instance.
+- `DeferredRequest::DeferredRequest.from_request(request)` - returns a DeferredRequest::DeferredRequest object (unsaved). Returns the DeferredRequest::DeferredRequest instance.
+- `DeferredRequest::DeferredRequest.perform_later_from_request!(request)` - creates a deferred request (saved) and enqueues job to process the request. Returns the DeferredRequest::DeferredRequest instance.
 
 ### Instance Methods
 - `deferred_request.perform_later` - Enqueues a job to `perform!` the deferred request later. Returns the job id.
 - `deferred_request.perform!` - Calls the `#{controller}_deferred(deferred_request)` method to be processed. Returns the deferred_request instance or raises an exception.
+
+## Configuration
+
+`DeferredRequest.model_parent_class` - Set the parent class
+`DeferredRequest.job_queue` - Set the job queue for the deferred request job
+
+```ruby
+# config/initializers/deferred_request.rb
+DeferredRequest.model_parent_class = "MyParentClass"
+DeferredRequest.job_queue = "low"
+```
 
 
 ## 🙏 Contributing

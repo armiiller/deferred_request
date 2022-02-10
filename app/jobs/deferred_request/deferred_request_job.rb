@@ -1,6 +1,6 @@
 module DeferredRequest
   class DeferredRequestJob < ApplicationJob
-    queue_as :default
+    queue_as ::DeferredRequest.job_queue
 
     def perform(*args)
       id = args[0]

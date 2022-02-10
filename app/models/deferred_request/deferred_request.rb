@@ -1,5 +1,5 @@
 module DeferredRequest
-  class DeferredRequest < ApplicationRecord
+  class DeferredRequest < DeferredRequest.model_parent_class.constantize
     serialize :routing
     serialize :request
     serialize :result

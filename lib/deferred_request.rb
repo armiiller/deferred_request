@@ -7,7 +7,7 @@ module DeferredRequest
   @@model_parent_class = "ApplicationRecord"
 
   mattr_accessor :deferred_request_instance_class
-  @@deferred_request_instance_class = "DeferredRequest"
+  @@deferred_request_instance_class = "DeferredRequest::DeferredRequest"
 
   mattr_accessor :job_queue
   @@job_queue = "default"

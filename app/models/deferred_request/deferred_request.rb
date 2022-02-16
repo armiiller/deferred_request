@@ -12,7 +12,7 @@ module DeferredRequest
     # request: ActionDispatch::Request
     # create a deferred request from a ActionDispatch::Request
     def self.from_request(request)
-      deferred_request = DeferredRequest.new
+      deferred_request = ::DeferredRequest.deferred_request_instance_class.constantize.new
 
       deferred_request.controller = request.controller_class.name
       deferred_request.action = request.params["action"]

@@ -72,8 +72,9 @@ end
 
 ## Configuration
 
-`DeferredRequest.model_parent_class` - Set the parent class
-`DeferredRequest.job_queue` - Set the job queue for the deferred request job
+- `DeferredRequest.model_parent_class` - Set the parent class
+- `DeferredRequest.deferred_request_instance_class` - Set the instance class that is created (in-case you sub-class)
+- `DeferredRequest.job_queue` - Set the job queue for the deferred request job
 
 ```ruby
 # config/initializers/deferred_request.rb

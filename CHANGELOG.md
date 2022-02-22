@@ -1,5 +1,12 @@
 # Changelog
 
+### [1.0.2](https://github.com/armiiller/deferred_request/compare/v1.0.1...v1.0.2) (2022-02-22)
+
+
+### Bug Fixes
+
+* add convinience methods and better documentation ([40e01fd](https://github.com/armiiller/deferred_request/commit/40e01fdea0eb3151a9548ad45b2d68c9da1d96e7))
+
 ### [1.0.1](https://github.com/armiiller/deferred_request/compare/v1.0.0...v1.0.1) (2022-02-07)
 
 

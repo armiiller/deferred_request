@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/deferred_request.svg)](https://badge.fury.io/rb/deferred_request)
+
 # Deferred Request
 A simple plugin to defer an http request until you can actually process it. This is good in situtations where work performed is not needed immidiately (think status callbacks from services like Twilio or Stripe). This pattern can help prevent you from getting DDoS'd by services you might interact with.
 

@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/armiiller/deferred_request/compare/v1.0.2...v1.0.3) (2022-08-02)
+
+
+### Bug Fixes
+
+* use json columns for serialized attributes ([a532e1b](https://github.com/armiiller/deferred_request/commit/a532e1b34a13c14a3a7ec1f19ccfe7e7cc0c3af2))
+
 ### [1.0.2](https://github.com/armiiller/deferred_request/compare/v1.0.1...v1.0.2) (2022-02-22)
 
 

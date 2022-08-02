@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.4](https://github.com/armiiller/deferred_request/compare/v1.0.3...v1.0.4) (2022-08-02)
+
+
+### Bug Fixes
+
+* rubygems otp settings ([68df7a0](https://github.com/armiiller/deferred_request/commit/68df7a022a6093d53f23b02a456f9ec835179a58))
+
 ## [1.0.3](https://github.com/armiiller/deferred_request/compare/v1.0.2...v1.0.3) (2022-08-02)
 
 

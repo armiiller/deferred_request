@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.5](https://github.com/armiiller/deferred_request/compare/v1.0.4...v1.0.5) (2022-10-25)
+
+
+### Bug Fixes
+
+* include the actual body of the request not just parsed params ([47ab87e](https://github.com/armiiller/deferred_request/commit/47ab87ee9d79730f408754b8970499f23758d494))
+
 ## [1.0.4](https://github.com/armiiller/deferred_request/compare/v1.0.3...v1.0.4) (2022-08-02)
 
 

@@ -5,7 +5,7 @@ module DeferredRequest
     serialize :result, JSON
 
     store_accessor :routing, "controller", "action"
-    store_accessor :request, "url", "method", "headers", "params", "remote_ip"
+    store_accessor :request, "url", "method", "headers", "params", "remote_ip", "body"
 
     enum status: {queued: 0, processing: 1, complete: 2, error: 99}
 
@@ -21,6 +21,7 @@ module DeferredRequest
       deferred_request.method = request.method
       deferred_request.headers = get_headers(request)
       deferred_request.params = request.params.except(:controller, :action)
+      deferred_request.body = request.body.read
       deferred_request.remote_ip = request.remote_ip
 
       deferred_request

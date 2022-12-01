@@ -12,6 +12,6 @@ gem "sprockets-rails"
 gem "appraisal"
 
 # Test against different databases
-gem "sqlite3", "~> 1.4"
+gem "sqlite3", "~> 1.5"
 gem "mysql2"
 gem "pg"

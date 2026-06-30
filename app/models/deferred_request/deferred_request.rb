@@ -1,8 +1,8 @@
 module DeferredRequest
   class DeferredRequest < DeferredRequest.model_parent_class.constantize
-    serialize :routing, JSON
-    serialize :request, JSON
-    serialize :result, JSON
+    serialize :routing, coder: JSON
+    serialize :request, coder: JSON
+    serialize :result, coder: JSON
 
     store_accessor :routing, "controller", "action"
     store_accessor :request, "url", "method", "headers", "params", "remote_ip", "body"

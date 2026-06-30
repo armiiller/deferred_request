@@ -47,7 +47,7 @@ module DeferredRequest
 
         klass = controller.constantize.new
 
-        self.result = klass.send("#{action}_deferred".to_sym, self)
+        self.result = klass.send(:"#{action}_deferred", self)
         self.status = :complete
       rescue => e
         Rails.logger.error("DeferredRequest::DeferredRequestJob: #{e.message}")

@@ -1,13 +1,13 @@
 module DeferredRequest
   class DeferredRequest < DeferredRequest.model_parent_class.constantize
-    serialize :routing, JSON
-    serialize :request, JSON
-    serialize :result, JSON
+    serialize :routing, coder: JSON
+    serialize :request, coder: JSON
+    serialize :result, coder: JSON
 
     store_accessor :routing, "controller", "action"
     store_accessor :request, "url", "method", "headers", "params", "remote_ip", "body"
 
-    enum status: {queued: 0, processing: 1, complete: 2, error: 99}
+    enum :status, {queued: 0, processing: 1, complete: 2, error: 99}
 
     # request: ActionDispatch::Request
     # create a deferred request from a ActionDispatch::Request
@@ -47,7 +47,7 @@ module DeferredRequest
 
         klass = controller.constantize.new
 
-        self.result = klass.send("#{action}_deferred".to_sym, self)
+        self.result = klass.send(:"#{action}_deferred", self)
         self.status = :complete
       rescue => e
         Rails.logger.error("DeferredRequest::DeferredRequestJob: #{e.message}")

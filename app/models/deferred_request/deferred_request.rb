@@ -7,7 +7,7 @@ module DeferredRequest
     store_accessor :routing, "controller", "action"
     store_accessor :request, "url", "method", "headers", "params", "remote_ip", "body"
 
-    enum status: {queued: 0, processing: 1, complete: 2, error: 99}
+    enum :status, {queued: 0, processing: 1, complete: 2, error: 99}
 
     # request: ActionDispatch::Request
     # create a deferred request from a ActionDispatch::Request

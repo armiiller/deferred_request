@@ -6,38 +6,45 @@ on:
       - main
 
 jobs:
-  release-please:
+  release:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
     steps:
-      - uses: GoogleCloudPlatform/release-please-action@v3
-        id: release
+      - uses: actions/checkout@v4
         with:
-          release-type: ruby
-          package-name: deferred_request
-          bump-minor-pre-major: true
-          version-file: "lib/deferred_request/version.rb"
-      # Checkout code if release was created
-      - uses: actions/checkout@v2
-        if: ${{ steps.release.outputs.release_created }}
-      # Setup ruby if a release was created
+          fetch-depth: 0
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.4.9'
-        if: ${{ steps.release.outputs.release_created }}
-      # Bundle install
-      - run: bundle install
-        if: ${{ steps.release.outputs.release_created }}
-      # Publish
-      - name: publish gem
+          bundler-cache: true
+
+      - name: Setup RubyGems credentials
         run: |
           mkdir -p $HOME/.gem
           touch $HOME/.gem/credentials
           chmod 0600 $HOME/.gem/credentials
-          printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
-          gem build *.gemspec
-          gem push *.gem
+          printf -- "---\n:rubygems_api_key: ${RUBYGEMS_AUTH_TOKEN}\n" > $HOME/.gem/credentials
         env:
-          # Make sure to update the secret name
-          # if yours isn't named RUBYGEMS_AUTH_TOKEN
-          GEM_HOST_API_KEY: "${{secrets.RUBYGEMS_AUTH_TOKEN}}"
-        if: ${{ steps.release.outputs.release_created }}
+          RUBYGEMS_AUTH_TOKEN: ${{ secrets.RUBYGEMS_AUTH_TOKEN }}
+
+      - name: Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: >
+          npx --yes
+          -p semantic-release
+          -p @semantic-release/commit-analyzer
+          -p @semantic-release/release-notes-generator
+          -p @semantic-release/changelog
+          -p @semantic-release/exec
+          -p @semantic-release/git
+          -p @semantic-release/github
+          semantic-release

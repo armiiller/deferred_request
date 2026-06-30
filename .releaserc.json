@@ -7,7 +7,7 @@
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "sed -i 's/VERSION = \"[^\"]*\"/VERSION = \"${nextRelease.version}\"/' lib/deferred_request/version.rb && bundle install",
+        "prepareCmd": "sed -i 's/VERSION = \"[^\"]*\"/VERSION = \"${nextRelease.version}\"/' lib/deferred_request/version.rb && bundle install && sed -i '/^  deferred_request ([^)]*)[[:space:]]*$/d' Gemfile.lock",
         "publishCmd": "gem build *.gemspec && gem push *.gem"
       }
     ],

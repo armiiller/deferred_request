@@ -1,5 +1,21 @@
 # Changelog
 
+## [2.0.0](https://github.com/armiiller/deferred_request/compare/v1.0.4...v2.0.0) (2026-06-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* minimum supported Rails version is now 7.1 (previously >= 6.0.0). Apps on Rails 6.x or 7.0 must upgrade Rails before bumping this gem.
+
+### Features
+
+* require Rails 7.1+ and Ruby 3.4+, drop Appraisal-based multi-version testing ([0d5b5ad](https://github.com/armiiller/deferred_request/commit/0d5b5adf1f0b301693cb032312521e9cca0fbdf0))
+
+
+### Bug Fixes
+
+* include the actual body of the request not just parsed params ([47ab87e](https://github.com/armiiller/deferred_request/commit/47ab87ee9d79730f408754b8970499f23758d494))
+
 ## [1.0.4](https://github.com/armiiller/deferred_request/compare/v1.0.3...v1.0.4) (2022-08-02)
 
 

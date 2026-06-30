@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/armiiller/deferred_request/compare/v2.0.0...v2.0.1) (2026-06-30)
+
+
+### Bug Fixes
+
+* add missing checksum for deferred_request in Gemfile.lock ([0e85773](https://github.com/armiiller/deferred_request/commit/0e85773f3cfd541fa79118a2286dc20f1d39a86e))
+
 ## [2.0.0](https://github.com/armiiller/deferred_request/compare/v1.0.4...v2.0.0) (2026-06-30)
 
 

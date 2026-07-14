@@ -38,6 +38,7 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BUNDLE_FROZEN: "false"
         run: >
           npx --yes
           -p semantic-release

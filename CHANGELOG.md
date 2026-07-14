@@ -1,3 +1,12 @@
+## [2.0.3](https://github.com/armiiller/deferred_request/compare/v2.0.2...v2.0.3) (2026-07-14)
+
+
+### Bug Fixes
+
+* release process ([df06ba8](https://github.com/armiiller/deferred_request/commit/df06ba869176288b91b7a2ee8e21b41a6a0abd4f))
+* remove deferred_request from Gemfile.lock CHECKSUMS to fix frozen mode CI failure ([8f16825](https://github.com/armiiller/deferred_request/commit/8f168250b72f920d623fbf7f62addf63e20b7d97))
+* unfreeze bundler in release step so Gemfile.lock can be updated ([9466470](https://github.com/armiiller/deferred_request/commit/9466470a4c4d0b66f75d63317df3f50805a5c254))
+
 # Changelog
 
 ## [2.0.2](https://github.com/armiiller/deferred_request/compare/v2.0.1...v2.0.2) (2026-06-30)

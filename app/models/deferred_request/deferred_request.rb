@@ -15,12 +15,28 @@ module DeferredRequest
       deferred_request = ::DeferredRequest.deferred_request_instance_class.constantize.new
 
       deferred_request.controller = request.controller_class.name
-      deferred_request.action = request.params["action"]
+      # use path_parameters, not request.params, for the routing action -
+      # request.params may contain a payload key literally called "action"
+      # (e.g. HaloPSA webhooks) and we don't want that ambiguity here
+      deferred_request.action = request.path_parameters[:action]
 
       deferred_request.url = request.url
       deferred_request.method = request.method
       deferred_request.headers = get_headers(request)
-      deferred_request.params = request.params.except(:controller, :action)
+
+      # request_parameters (body) + query_parameters only - deliberately
+      # excludes path_parameters(:controller, :action) so a payload key
+      # literally named "action" or "controller" isn't clobbered by Rails'
+      # routing metadata. We then re-merge back in the *other* route segments
+      # (e.g. :pagertree_integration_id) applied last, so they win over any
+      # colliding payload/query key of the same name. This gem is shared
+      # across many controllers with different route shapes, so this can't
+      # hardcode one consumer's route param name.
+      deferred_request.params = request.request_parameters
+        .merge(request.query_parameters)
+        .merge(request.path_parameters.except(:controller, :action))
+        .with_indifferent_access
+
       deferred_request.body = request.body.read
       deferred_request.remote_ip = request.remote_ip
 
